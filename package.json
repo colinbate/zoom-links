@@ -1,5 +1,5 @@
 {
-  "name": "svelte-ts-tailwind-app",
+  "name": "zoom-links",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -29,6 +29,7 @@
     "typescript": "4.4.3"
   },
   "dependencies": {
+    "idb-keyval": "^6.0.2",
     "sirv-cli": "^1.0.11"
   }
 }

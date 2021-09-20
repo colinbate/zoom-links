@@ -1,20 +1,35 @@
 <script lang="ts">
 	import ModeSwitcher from './ModeSwitcher.svelte';
 	import Tailwindcss from './Tailwindcss.svelte';
-	export let name: string;
-</script>
-<style>
-	.custom-style {
-		@apply italic;
+	import GreetNew from './GreetNew.svelte';
+	import UserSelect from './UserSelect.svelte';
+	import Main from './Main.svelte';
+	import { users } from './data';
+	import type { User } from './types';
+	let state: 'new' | 'multiuser' | 'main' = 'new';
+	let user: User;
+
+	$: {
+		if ($users.length === 0) {
+			state = 'new';
+		} else if ($users.length > 1) {
+			state = 'multiuser';
+		} else {
+			user = $users[0];
+			state = 'main';
+		}
 	}
-</style>
+</script>
 <Tailwindcss />
-<ModeSwitcher />
-<main class="p-4 mx-auto text-center max-w-xl">
-	<h1 class="uppercase text-6xl leading-normal font-thin text-svelte">Hello {name}!</h1>
-	<p class="custom-style mt-[3rem]">
-		Visit the
-		<a href="https://svelte.dev/tutorial" class="text-blue-500 underline">Svelte tutorial</a>
-		to learn how to build Svelte apps.
-	</p>
-</main>
+<header class="flex items-center bg-svelte-light dark:bg-svelte-dark p-2">
+	<h1 class="flex-grow text-xl leading-normal font-bold">Zoom Links</h1>
+	<div class="mr-8">{user?.name || ''}</div>
+	<ModeSwitcher />
+</header>
+{#if state === 'new'}
+	<GreetNew />
+{:else if state === 'multiuser'}
+	<UserSelect />
+{:else if state === 'main'}
+	<Main {user} />
+{/if}

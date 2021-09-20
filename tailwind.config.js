@@ -11,7 +11,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        svelte: '#ff3e00',
+        svelte: {
+          DEFAULT: '#ff3e00',
+          dark: '#d63600',
+          light: '#ff5e29',
+        },
+        burn: {
+          DEFAULT: 'rgba(0, 0, 0, 0.1)',
+          '15': 'rgba(0, 0, 0, 0.15)',
+          '20': 'rgba(0, 0, 0, 0.2)',
+        },
+        dodge: {
+          DEFAULT: 'rgba(255, 255, 255, 0.1)',
+          '15': 'rgba(255, 255, 255, 0.15)',
+          '20': 'rgba(255, 255, 255, 0.2)',
+        },
+        zoom: '#2D8CFF',
       },
     },
   },
