@@ -5,7 +5,7 @@ import type { Contact } from './types';
 import Input from './Input.svelte';
 const dispatch = createEventDispatcher();
 let link: Contact = {label: '', id: '', pwd: '', joinAs: ''};
-const idShape = /^\d{9,10}$/;
+const idShape = /^\d{9,11}$/;
 $: disabled = !link.label || !validId(link.id);
 function validId(id: string) {
   return idShape.test(id.replace(/\s+/g, ''));
